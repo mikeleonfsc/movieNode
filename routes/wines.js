@@ -17,12 +17,14 @@ var Movie = mongoose.model('Movie', MovieSchema);
 var mov = new Movie({ name: 'Master NodeJS', watchAgain: false, rating: 1});
 
 // Save it to database
+/*
 mov.save(function (err) {
     if (err)
         console.log(err);
     else
         console.log(mov);
 });
+*/
 
 
 exports.findAll = function (req, res) {
@@ -30,14 +32,32 @@ exports.findAll = function (req, res) {
         console.log('sending all movies');
         res.send(movies);
         console.log('movies sent');
-         
     });
 };
 
-Movie.find(function (err, movies) {
-    if (err) return console.error(err);
-    console.log(movies)
-});
+exports.findById = function (req, res) {
+    var id = req.params.id;
+    console.log('Retrieving movie: ' + id);
+    Movie.findById(id, function (err, movie) {
+        console.log('sending movie for id: '+ id);
+        res.send(movie);
+        console.log('movie sent');
+    });
+};
+
+exports.addMovie = function (req, res) {
+    var rawMovie = req.body;
+    console.log('Adding moving: ' + JSON.stringify(rawMovie));
+    var movie = new Movie(rawMovie); //dont work- mongoose.model(rawMovie, MovieSchema);
+    movie.save(function (err) {
+        if (err)
+            console.log(err);
+        else
+            console.log('new movie saved!'+mov);
+            res.send(movie.id);
+    });
+    
+};
 
 /*
 var mongo = require('mongodb');
