@@ -18,6 +18,7 @@ app.configure(function () {
 
 app.get('/wines/:id', wine.findById);
 app.get('/wines', wine.findAll);
+app.get('/wines/find/:name', wine.findName);
 app.post('/wines', wine.addMovie);
 app.delete('/wines/:id', wine.deleteMovie);
 app.put('/wines/:id', wine.updateMovie);

@@ -45,6 +45,16 @@ exports.findById = function (req, res) {
     });
 };
 
+exports.findName = function (req, res) {
+    var name = req.params.name;
+    console.log('Retrieving movie: ' + name);
+    Movie.findOne({'name': name}, function (err, movie) {
+        console.log('searcing for movie name: ' + name);
+        res.send(movie);
+        console.log('movie sent: ' +movie);
+    });
+};
+
 exports.addMovie = function (req, res) {
     var rawMovie = req.body;
     console.log('Adding moving: ' + JSON.stringify(rawMovie));
