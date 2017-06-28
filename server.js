@@ -19,6 +19,7 @@ app.configure(function () {
 app.get('/wines/:id', wine.findById);
 app.get('/wines', wine.findAll);
 app.post('/wines', wine.addMovie);
+app.delete('/wines/:id', wine.deleteMovie);
 
 /*
  
@@ -27,7 +28,6 @@ app.post('/wines', wine.addMovie);
 app.put('/wines/:id', wine.updateWine);
 
 
-app.delete('/wines/:id', wine.deleteWine);
 
 
 */

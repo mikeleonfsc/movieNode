@@ -59,6 +59,19 @@ exports.addMovie = function (req, res) {
     
 };
 
+exports.deleteMovie = function (req, res) {
+    var id = req.params.id;
+    console.log('Deleting movie: ' + id);
+    Movie.findByIdAndRemove (id, function (err) {
+        if (err)
+            console.log(err);
+        else
+            console.log('movie deleted!' + mov);
+        res.send(id);
+    });
+
+}
+
 /*
 var mongo = require('mongodb');
 var Server = mongo.Server,
