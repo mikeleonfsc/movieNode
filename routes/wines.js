@@ -72,6 +72,21 @@ exports.deleteMovie = function (req, res) {
 
 }
 
+exports.updateMovie = function (req, res) {
+    var id = req.params.id;
+    var rawMovie = req.body;
+    console.log('Adding moving: ' + JSON.stringify(rawMovie));
+    var query = { _id: rawMovie._id };
+    Movie.findByIdAndUpdate(query, rawMovie, function (err) {
+        if (err)
+            console.log(err);
+        else
+            console.log('movie updated!' + rawMovie);
+        res.send(id);
+    });
+
+}
+
 /*
 var mongo = require('mongodb');
 var Server = mongo.Server,

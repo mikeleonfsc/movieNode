@@ -20,12 +20,12 @@ app.get('/wines/:id', wine.findById);
 app.get('/wines', wine.findAll);
 app.post('/wines', wine.addMovie);
 app.delete('/wines/:id', wine.deleteMovie);
+app.put('/wines/:id', wine.updateMovie);
 
 /*
  
 
 
-app.put('/wines/:id', wine.updateWine);
 
 
 
