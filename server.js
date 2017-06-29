@@ -5,6 +5,8 @@ var express = require('express'),
 
 
 var app = express();
+var cors = require('cors')
+app.use(cors())   
 
 
 
@@ -13,7 +15,13 @@ app.configure(function () {
     app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
 
     app.use(express.bodyParser());
+/*
+    var cors = require('cors');
 
+    app.use(cors({ origin: 'http://localhost:4300' }));
+  */
+
+     
 });
 
 app.get('/wines/:id', wine.findById);

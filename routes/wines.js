@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/movies');
 
 var MovieSchema = new mongoose.Schema({
+    id: Number,
     name: String,
     watchAgain: Boolean,
     rating: Number,
@@ -63,8 +64,8 @@ exports.addMovie = function (req, res) {
         if (err)
             console.log(err);
         else
-            console.log('new movie saved!'+mov);
-            res.send(movie.id);
+            console.log('new movie saved!' + movie);
+            res.send(movie);
     });
     
 };
